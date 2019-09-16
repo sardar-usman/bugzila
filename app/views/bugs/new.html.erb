@@ -1,0 +1,63 @@
+<div class="col-md-4 offset-4">
+  <h1>Create New Bug</h1>
+</div>
+
+<%= form_for @bugs, html: { multipart: true } do |f| %>
+  <div class="form-group">
+    <div class="form-group">
+      <div class="col-md-4 offset-4">
+      <%= f.label :project_id, 'Select Project', class: 'control-label'%><br>
+      <%= f.select :project_id, options_from_collection_for_select(@projects, :id, :name), {include_blank: true}, {class: 'form-control', required: true} %>
+      </div>
+    </div>
+
+    <div class="col-lg-4 offset-4">
+      <%= f.label :name, 'Title'%>
+      <%= f.text_field :title, autofocus: true, class: 'form-control', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 offset-4">
+      <%= f.label :severity, 'Severity', class: 'control-label'%><br>
+      <%= f.radio_button :severity, 'critical', {required: true} %> Critical <br />
+      <%= f.radio_button :severity, 'high', {required: true} %> High <br />
+      <%= f.radio_button :severity, 'medium', {required: true} %> Medium <br />
+      <%= f.radio_button :severity, 'low', {required: true} %> low <br />
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 offset-4">
+      <%= f.label :actual_result, 'Actual Result'%>
+      <%= f.text_area :actual_result, autofocus: true, class: 'form-control', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 offset-4">
+      <%= f.label :expected_result, 'Expected Result'%>
+      <%= f.text_area :expected_result, autofocus: true, class: 'form-control', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 offset-4">
+      <%= f.label :screen_shot, 'Upload Bug Image'%> <br />
+      <%= f.file_field :screen_shot, :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 offset-4">
+      <%= f.label :user_id, 'Assign To'%>
+      <%= f.select :user_id, options_from_collection_for_select(@developers, :id, :name), {}, {class: 'form-control', required: true} %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-4 offset-4">
+      <%= f.submit 'Add Bug', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

@@ -1,0 +1,26 @@
+<div class= 'container'>
+  <div class="row">
+    <table id="example" class="table table-striped table-bordered mt-5">
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Project Description</th>
+          <th>Assign Manager</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+            <td> <%= @project.name %> </td>
+            <td> <%= @project.description %> </td>
+            <td> <%= @project.manager.name %> </td>
+            <td>
+              <%= link_to "Assign Developer", assign_developer_project_path, class: 'btn btn-primary' %>
+              <%= link_to "Assign Sqa", assign_sqa_project_path, class: 'btn btn-secondary' %>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+     <%= link_to "Back", :back %>
+  </div>
+</div>
