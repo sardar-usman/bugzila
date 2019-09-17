@@ -53,8 +53,8 @@ class ProjectsController < ApplicationController
 
   def remove_developer
     @project = Project.find(params[:id])
-    @user_id = User.find(params[:user_id])
-    @project.users.destroy(@user_id)
+    @user = User.find(params[:user_id])
+    @project.users.destroy(@user)
 
     redirect_back fallback_location: root_path
   end
@@ -75,8 +75,8 @@ class ProjectsController < ApplicationController
 
   def remove_sqa
     @project = Project.find(params[:id])
-    @user_id = User.find(params[:user_id])
-    @project.users.destroy(@user_id)
+    @user = User.find(params[:user_id])
+    @project.users.destroy(@user)
 
     redirect_back fallback_location: root_path
   end
