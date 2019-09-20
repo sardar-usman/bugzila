@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     member do
       get    'assign_developer'
       get    'assign_sqa'
-      post   'add_developer'
+      get    'add_developer'
       delete 'remove_developer'
       post   'add_sqa'
       delete 'remove_sqa'

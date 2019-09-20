@@ -16,7 +16,7 @@
               <% if @project_user.exists?(d.id) %>
                 <%= link_to "Remove Developer", remove_developer_project_path(user_id: d.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger btn-sm' %>
               <% else %>
-                <%= link_to "Add Developer", add_developer_project_path(user_id: d.id), method: 'post', class: 'btn btn-success btn-sm' %>
+                <%= link_to "Add Developer", add_developer_project_path(user_id: d.id), method: 'get', class: 'btn btn-success btn-sm' %>
               <% end %>
             </td>
           </tr>
