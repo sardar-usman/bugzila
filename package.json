@@ -1,7 +1,7 @@
 {
-  "name": "new-bugzila",
+  "name": "bugzila",
   "private": true,
-  "dependencies": {
-    "yarn": "^1.12.3"
+  "engines": {
+    "yarn": "1.17.3"
   }
 }
