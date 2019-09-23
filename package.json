@@ -3,5 +3,9 @@
   "private": true,
   "engines": {
     "yarn": "1.17.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.40.2",
+    "webpack-dev-server": "^3.8.1"
   }
 }
