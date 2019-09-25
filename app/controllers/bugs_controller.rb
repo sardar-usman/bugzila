@@ -7,7 +7,18 @@ class BugsController < ApplicationController
     @bugs = Bug.new
     @user = current_user
     @projects = @user.projects
-    @developers = User.developer
+    if params[:project_id].present?
+      @developers = Project.find(params[:project_id]).users.developer
+    else
+      @developers = User.developer
+    end
+    if request.xhr?
+      respond_to do |format|
+        format.json do
+          render json: { developers: @developers }
+        end
+      end
+    end
   end
 
   def create
