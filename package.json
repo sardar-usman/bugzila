@@ -1,7 +1,14 @@
 {
-  "name": "new-bugzila",
+  "name": "bugzila",
   "private": true,
+  "engines": {
+    "yarn": "1.17.3"
+  },
+  "devDependencies": {
+    "webpack": "^4.40.2",
+    "webpack-dev-server": "^3.8.1"
+  },
   "dependencies": {
-    "yarn": "^1.12.3"
+    "@rails/webpacker": "^4.0.7"
   }
 }

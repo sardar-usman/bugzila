@@ -7,7 +7,18 @@ class BugsController < ApplicationController
     @bugs = Bug.new
     @user = current_user
     @projects = @user.projects
-    @developers = User.developer
+    if params[:project_id].present?
+      @developers = Project.find(params[:project_id]).users.developer
+    else
+      @developers = User.developer
+    end
+    if request.xhr?
+      respond_to do |format|
+        format.json do
+          render json: { developers: @developers }
+        end
+      end
+    end
   end
 
   def create
@@ -42,7 +53,6 @@ class BugsController < ApplicationController
   private
 
   def bug_params
-    bug = params.require(:bug).permit(:project_id, :title, :severity, :actual_result, :expected_result, :user_id)
-    bug.screen_shot.attach(params[:bug][:screen_shot])
+    params.require(:bug).permit(:project_id, :title, :severity, :actual_result, :expected_result, :user_id, :screen_shot)
   end
 end
